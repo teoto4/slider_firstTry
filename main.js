@@ -59,12 +59,27 @@ function backSlide() {
   console.log(slide_index);
 }
 
-timer.addEventListener("click", (e) => {
-  setInterval(nextSlideTime, 3700);
-});
+// timer.addEventListener("click", (e) => {
+//   setInterval(nextSlideTime, 3700);
+// });
+let intervalTimer;
 
 function nextSlideTime() {
   slide.classList.add("slide_back");
   slide.classList.replace("slide_back", "slide_effect");
   setTimeout(nextSlide, 700);
 }
+console.log(timer.click);
+
+timer.addEventListener("click", (e) => {
+  if (timer.classList.contains("onClick") === true) {
+    console.log("true");
+    clearInterval(intervalTimer);
+    timer.classList.remove("onClick");
+  } else {
+    console.log("false");
+
+    timer.classList.add("onClick");
+    intervalTimer = setInterval(nextSlideTime, 3700);
+  }
+});
